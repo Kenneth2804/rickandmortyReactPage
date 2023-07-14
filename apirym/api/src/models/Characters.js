@@ -15,19 +15,19 @@ module.exports = (sequelize) =>{
         },
         status:{
             type: DataTypes.ENUM('Alive', 'Dead', 'Unknown'),
-            allowNull: false
+    
         },
         location:{
             type: DataTypes.STRING,
-            allowNull: false
+       
         },
         origen:{
             type: DataTypes.STRING,
-            allowNull: false
+       
         },
         species:{
             type: DataTypes.STRING,
-            allowNull: false
+
         },
         image:{
             type: DataTypes.STRING

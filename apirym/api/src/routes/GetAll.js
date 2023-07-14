@@ -1,5 +1,6 @@
 const {Router} = require("express")
 const axios = require("axios");
+const {Episodes, Characters}  = require ('../db.js');
 
 const router = Router();
 
@@ -20,9 +21,12 @@ router.get("/", async(req, res) =>{
                 origen: personaje.origin.name
             }
             return obj
-        })
+        });
 
-        return res.status(200).send(formatear)
+        const db = await Characters.findAll({include: [{model: Episodes}]});
+        const suma = [...formatear,... db];
+
+        return res.status(200).send(suma)
 
     } catch (error) {
         return res.status(404).send({message: error})
